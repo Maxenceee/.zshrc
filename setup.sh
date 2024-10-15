@@ -16,8 +16,8 @@ if ! command -v fzf &> /dev/null; then
         if command -v apt &> /dev/null; then
             sudo apt update && sudo apt install -y fzf
         else
-			echo "apt not installed. Could not install fzf."
-			exit 1
+            echo "apt not installed. Could not install fzf."
+            exit 1
         fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         # Installation sur macOS avec Homebrew
@@ -25,11 +25,11 @@ if ! command -v fzf &> /dev/null; then
             brew install fzf
         else
             echo "Homebrew not installed. Could not install fzf."
-			exit 1
+            exit 1
         fi
     else
         echo "Unknown os"
-		exit 1
+        exit 1
     fi
 fi
 
