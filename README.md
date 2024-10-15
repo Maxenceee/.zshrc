@@ -1,4 +1,1 @@
 # .zshrc
-# .zshrc
-# .zshrc
-# .zshrc
