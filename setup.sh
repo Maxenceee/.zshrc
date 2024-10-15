@@ -8,6 +8,31 @@ fi
 
 cp ./config.zsh ~/.zshrc
 
+# Vérification de l'installation de fzf
+if ! command -v fzf &> /dev/null; then
+
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        # Installation sur Linux avec apt
+        if command -v apt &> /dev/null; then
+            sudo apt update && sudo apt install -y fzf
+        else
+			echo "apt not installed. Could not install fzf."
+			exit 1
+        fi
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        # Installation sur macOS avec Homebrew
+        if command -v brew &> /dev/null; then
+            brew install fzf
+        else
+            echo "Homebrew not installed. Could not install fzf."
+			exit 1
+        fi
+    else
+        echo "Unknown os"
+		exit 1
+    fi
+fi
+
 source ~/.zshrc
 
 echo "Configuration... done"
@@ -34,8 +59,6 @@ if [[ "$reponse" == "y" || "$reponse" == "Y" ]]; then
     else
         echo "Unknown os"
     fi
-
-    # sleep 1
 
     kill -9 $PPID
 fi

@@ -68,8 +68,12 @@ alias la='ls -lAh'
 alias ll='ls -lh'
 alias lsa='ls -lah'
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-PATH="$PATH:/home/maxence/.local/bin"
+# Export homebrew path
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+PATH="$PATH:$HOME/.local/bin"
 
 # Shell integration
 eval "$(fzf --zsh)"
